@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  symfony:
+        image: alejandropolobarranco/symfony-app:latest
+        container_name: backend-symfony
+        expose: 
+        - "9000"
+        networks:
+        - symfony_net
+
+  nginx:
+    image: alejandropolobarranco/nginx-symfony:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - symfony
+    networks:
+      - symfony_net
+  database:
+    image: mysql:8.0
+    container_name: symfony-mysql
+    environment:
+      MYSQL_DATABASE: symfony
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - symfony_net
+
+networks:
+  symfony_net:
+
+volumes:
+  db_data:
