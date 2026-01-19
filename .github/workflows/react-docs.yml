@@ -17,6 +17,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Change repository
+        run: cd ./frontend-react
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
