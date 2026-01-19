@@ -1,4 +1,4 @@
-name: RA1-RA2 CI/CD
+name: DesplegaSymfony
 
 on:
   push:
