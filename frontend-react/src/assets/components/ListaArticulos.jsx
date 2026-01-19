@@ -1,10 +1,31 @@
 import { useEffect, useState } from "react";
 import { getArticulos } from "../services/api";
 
+/**
+ * Componente que muestra una lista de artículos obtenidos desde la API.
+ *
+ * Realiza una llamada al backend al cargarse el componente y renderiza
+ * una tarjeta por cada artículo recibido.
+ *
+ * @component
+ * @returns {JSX.Element} Lista de artículos en formato tarjetas
+ */
 export default function ListaArticulos() {
+  /**
+   * Estado que almacena la lista de artículos.
+   * @type {Object[]}
+   */
   const [articulos, setArticulos] = useState([]);
+  /**
+   * Estado que almacena el mensaje de error.
+   * @type {(string|null)}
+   */
   const [error, setError] = useState(null);
 
+  /**
+   * Efecto que se ejecuta al montar el componente.
+   * Obtiene los artículos desde la API.
+   */
   useEffect(() => {
     getArticulos()
       .then(setArticulos)

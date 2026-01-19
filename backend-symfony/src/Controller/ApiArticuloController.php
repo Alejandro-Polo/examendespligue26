@@ -7,9 +7,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
+/**
+ * Controlador API de Artículos
+ * Expone los artículos en formato JSON para consumo externo (React).
+ * 
+ * @package App\Controller
+ */
 #[Route('/api/articulos', name: 'api_articulos_')]
 class ApiArticuloController extends AbstractController
 {
+    /**
+     * Devuelve un listado de artículos en formato JSON.
+     *
+     * @param ArticuloRepository $articuloRepository Repositorio de artículos
+     * @return JsonResponse Respuesta JSON con los datos de los artículos
+     */
     #[Route('', name: 'list', methods: ['GET'])]
     public function list(ArticuloRepository $articuloRepository): JsonResponse
     {
