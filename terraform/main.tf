@@ -40,7 +40,7 @@ resource "aws_security_group" "web_sg" {
   }
 
   tags = {
-    Name = "RA1-RA2-SG"
+    Name = "examen-SG"
   }
 }
 
@@ -67,7 +67,7 @@ resource "aws_instance" "symfony" {
                 EOF
 
   tags = {
-    Name = "RA1-RA2-Symfony"
+    Name = "Examen-Symfony"
   }
 }
 
